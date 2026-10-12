@@ -34,7 +34,7 @@ the finished analysis into eda.ipynb before submitting.
 - [ ] State whether the pattern was expected and what to explore next.
 - [ ] Commit the remaining analysis.
 
-## Person 2 — PSID
+## Person 2 — PSID (Asha)
 
 - [ ] Review the existing PSID profile and initial cleaning.
 - [ ] Check employment codes, wage-receipt codes, ambiguous zeros,

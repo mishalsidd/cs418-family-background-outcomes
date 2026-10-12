@@ -21,18 +21,16 @@ the finished analysis into eda.ipynb before submitting.
 - [x] Restored 1,162 skipped wage amounts to zero for respondents
       who reported receiving no job income.
 - [x] Added NLSY97 cleaning notes and checked the cleaned summaries.
-
-### Remaining
-- [ ] Check valid ranges, category codes, and unique person IDs.
-- [ ] Review earlier Markdown so it matches the expanded NLSY97 file.
-- [ ] Plot household income, mother's education, father's education,
+- [x] Check valid ranges, category codes, and unique person IDs.
+- [x] Review earlier Markdown so it matches the expanded NLSY97 file.
+- [x] Plot household income, mother's education, father's education,
       adult wages, weeks worked, and job-income receipt.
-- [ ] Describe the center, spread, skew, and unusual values beside
+- [x] Describe the center, spread, skew, and unusual values beside
       each distribution plot.
-- [ ] Make a relationship plot of parental education versus adult wages.
-- [ ] Explain what the plot shows and why it matters.
-- [ ] State whether the pattern was expected and what to explore next.
-- [ ] Commit the remaining analysis.
+- [x] Make a relationship plot of parental education versus adult wages.
+- [x] Explain what the plot shows and why it matters.
+- [x] State whether the pattern was expected and what to explore next.
+- [x] Commit the remaining analysis.
 
 ## Person 2 — PSID (Asha)
 

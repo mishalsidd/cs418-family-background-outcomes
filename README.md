@@ -20,7 +20,7 @@ Notes about shape of data:
 
 **Dataset basics:** PSID has 2,362 people and 25 columns (plus a linkage file with 21,511 rows). NLSY97 has 8,984 people and 12 columns. The secondary datasets are Opportunity Insights (100 parental income percentiles) and ELS (group percentages).
 
-**Revised research question:** How are early childhood family income and parental education associated with adult earnings and employment (weeks worked and whether someone had job income)? We changed "predict" to "associated with" because exploratory analysis shows patterns, not predictions or causes.
+**Research question:** How strongly do early childhood family income and parental education levels predict adult earning potential and employment status? We kept the same question after the exploratory analysis. The plots show associations and not predictions, so the modeling step will test how strongly. We will measure employment with weeks worked and whether someone had job income, and in PSID parental education is the household head's and spouse's education.
 
 **Anomaly notes:** Unknown codes (99 in PSID education, 9,999,999 in PSID wages, and negative codes in NLSY97) were treated as missing. NLSY97 education code 95 was left out of education comparisons, and 1,162 skipped NLSY97 wages were set to 0 for people with no job income. ELS source notes were removed. There were no duplicate rows. The full table is at the end of `eda.ipynb`.
 

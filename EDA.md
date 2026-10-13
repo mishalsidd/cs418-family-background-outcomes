@@ -92,14 +92,13 @@ This plot compares Opportunity Insights with NLSY97. The dollar amounts are not 
 
 ![Opportunity Insights vs NLSY97 adult earnings by parental income](outputs/compare_1.png)
 
-## Step 6: Revised research question
+## Step 6: Research question
 
-**Original:** How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?
+**Our research question:** How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?
 
-**Revised:** How are early childhood family income and parental education associated with adult earnings and employment (weeks worked and whether someone had job income)?
+We are keeping the same question. Nothing in the exploratory analysis made us change it. What changed is how we plan to answer it:
 
-What changed and why:
-
-- "Predict" became "associated with", because exploratory analysis shows patterns and does not test prediction or cause.
-- Employment is measured by weeks worked and whether someone had job income, because the employment status codes are unclear and not the same across datasets.
+- Our plots show that family income and parental education are associated with adult earnings and employment, but they do not show how strongly they predict them. That is for the modeling step.
+- We will measure employment with weeks worked and whether someone had job income, because the PSID employment status codes are unclear and not the same across datasets.
 - In PSID, parental education is the household head's and spouse's education, which is only an approximate measure.
+- Opportunity Insights and ELS are group averages, so they support the main datasets and do not replace them.

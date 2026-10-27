@@ -22,7 +22,7 @@
 
 **Deliverable:** Draft of the Motivation, Composition, and Collection Process sections in `DATASHEET.md`.
 
-## Person 2 — Preprocessing, Existing Uses, and Dataset Maintenance
+## Asha — Preprocessing, Existing Uses, and Dataset Maintenance
 
 - [ ] Document the **Preprocessing** section for each primary dataset.
   - [ ] What cleaning, filtering, or labeling did the publisher perform?

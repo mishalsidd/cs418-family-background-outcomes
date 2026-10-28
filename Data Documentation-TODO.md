@@ -108,12 +108,36 @@
 - [ ] Ensure every group member has at least one commit for this checkpoint.
 - [ ] Submit the group's GitHub repository URL in Canvas.
 
-## Suggested Workflow
-
-1. Each person researches and drafts their assigned sections in the shared `DATASHEET.md`.
-2. Coordinate early if multiple people need the same publisher sources or dataset information.
-3. Person 4 checks the actual code with the rest of the group to verify the recipe and join counts.
-4. Everyone reviews the completed document for accuracy and missing rubric requirements.
-5. Update `README.md`, push all commits, and have one group member submit the repository URL in Canvas.
+DATASHEET.md structure
+1. Dataset 1 — Dataset Facts summary card
+- Motivation
+- Composition
+- Collection Process
+- Preprocessing
+- Uses
+- Distribution
+- Maintenance
+  
+2. Dataset 2 — Dataset Facts summary card
+- Motivation
+- Composition
+- Collection Process
+- Preprocessing
+- Uses
+- Distribution
+  
+3. Research Scope
+- Target population, access frame, and sample for each research question.
+4. Codebook
+- One shared table documenting every column used in your analysis, including columns from both datasets and any derived columns.
+5. Data-Rebuilding Recipe
+- How the raw datasets are processed, filtered, and joined.
+- Include join keys and matched/unmatched row counts.
+6. Access and Reuse (FAIR)
+- Links, access dates, formats, licenses, and reuse conditions for each dataset.
+7. People Represented or Affected
+- Representation, potential bias, and ethical considerations.
+8. Sources
+- Publisher documentation and citations.
 
 **Important:** Use publisher documentation and your own code output as evidence. Do not rely on AI-generated dataset facts or use AI to write the actual datasheet or README documentation.

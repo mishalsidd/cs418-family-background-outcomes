@@ -55,6 +55,44 @@ The exact consent procedures and ethical review approvals for the survey waves i
 
 We downloaded the PSID extracts through the publisher's data system and saved them in the `data/raw/psid/` folder. The exact steps used to select the variables and download the files still need to be included in our reproduction instructions.
 
+
+
+### Preprocessing
+
+Variable organization: PSID uses alphanumeric variable identifiers to organize its extensive collection of survey variables across historical waves.
+
+Raw data availability: Data are available through the PSID data access system, subject to applicable access requirements and restrictions.
+
+Publisher preprocessing: Consult PSID documentation for details on data editing, consistency checks, and other processing performed before release.
+
+### Uses
+
+Existing research: PSID has been used in thousands of peer-reviewed publications. Verify the reported publication count using an official PSID source.
+
+Intended uses: Studying long-term economic, social, and health changes among American families and their descendants across generations.
+
+Limitations: The suitability of PSID for estimating point-in-time demographic statistics depends on the research question, survey wave, sample, and appropriate weighting. Do not assume that all cross-sectional estimates are invalid.
+
+### Distribution
+
+Publisher and access: PSID is administered by the University of Michigan's Institute for Social Research. Data access is provided through the official PSID website.
+
+Access conditions: Check the applicable PSID conditions of use and any restrictions associated with the requested data.
+
+License and reuse: Verify the specific terms that apply to PSID before identifying a license. Do not assume that the Open Database License (ODbL) applies to PSID.
+
+Redistribution: Confirm whether raw data, extracts, and derived datasets may be shared under the applicable terms.
+
+### Maintenance
+
+Maintaining organization: University of Michigan's Institute for Social Research (ISR).
+
+Data collection schedule: PSID collected data annually from 1968 to 1997. Beginning in 1999, data collection transitioned to a biennial schedule (every two years).
+
+Tracking updates: PSID announces file releases and data updates through its News section.
+
+Version information: Record the release or version of the specific files used in your project.
+
 ### Sources
 
 - [PSID Overview](https://psidonline.isr.umich.edu/GettingStarted.aspx)
@@ -126,6 +164,56 @@ For our project, we mainly use family background information collected in 1997 a
 The downloaded codebook does not explain the exact consent procedures or ethical review approvals for each survey wave. We would need to check additional publisher documentation for those details.
 
 We downloaded the expanded extract and saved it in `data/raw/nlsy97/`. The file `NLSY97_expanded.cdb` contains descriptions of the variables and their values.
+
+### Preprocessing
+
+Missing-value codes: NLSY97 uses special codes to distinguish response and interview statuses. Examples in the project notes include:
+
+-1: Refused
+
+-2: Don't Know
+
+-3: Invalid Skip
+
+-4: Valid Skip
+
+-5: Non-interview
+
+Data editing: The project notes describe editing timeline information to improve consistency. Verify the exact procedure in the official documentation.
+
+Variable organization: Check the NLSY97 documentation for how variables and historical information are organized across survey rounds.
+
+Raw data availability: Consult the official NLSY97 website for public-use data access and applicable restrictions.
+
+### Uses
+
+Employment and earnings: Studying employment histories, wages, employee benefits, and unemployment.
+
+Education: Analyzing high school completion, college attendance, and educational attainment.
+
+Family and well-being: Examining family dynamics, health, crime, and substance-use outcomes where supported by the available variables.
+
+Limitations: The cohort represents people born during a specific period. Findings should not automatically be generalized to other birth cohorts, and the dataset should not be used to identify or track individual participants' locations.
+
+### Distribution
+
+Publisher and sponsor: The U.S. Bureau of Labor Statistics (BLS) sponsors the NLSY97. Data are made available through the official NLSY97 website.
+
+Access conditions: Consult the official site for public-use data access, registration requirements, and any restrictions.
+
+License and reuse: Verify the applicable public-use terms before describing the data as public domain or making claims about commercial reuse.
+
+Formats and releases: Document the file formats and release/version information for the specific data files used in the project.
+
+### Maintenance
+
+Sponsoring organization: The U.S. Bureau of Labor Statistics (BLS) sponsors the NLSY97.
+
+Interview schedule: Interviews were conducted annually from 1997 to 2011 and transitioned to a biennial schedule beginning in 2013.
+
+Tracking updates: Consult the official NLSY97 website for data releases and documentation updates.
+
+Version information: Record the release or version of the specific NLSY97 files used in your project. Distinguish the interview schedule from the data release schedule.
 
 ### Sources
 

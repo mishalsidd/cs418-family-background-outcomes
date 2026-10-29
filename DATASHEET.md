@@ -251,33 +251,32 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 
 | Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
 |---|---|---|---|---|---|---|
-| ER12079 | Float | USD | Family income in 1996 | Numeric; includes negative values | Null | J365605.csv |
-| ER12222 | Integer | Education code | Household head's education | Code 99 treated as missing | 99 → null | J365605.csv; eda.ipynb |
-| ER12223 | Integer | Education code | Spouse's education | Code 99 treated as missing | 99 → null | J365605.csv; eda.ipynb |
-| TA210679 | Integer | USD | Adult wages/salary | Nonnegative values after cleaning | 9999999 → null | J365605.csv; eda.ipynb |
-| TA210220 | Integer | Employment code | Adult employment status | Categorical codes; verify codebook | Verify official codes | J365605.csv |
-| TA210225 | Integer | Weeks | Number of weeks worked | 0–52 | Verify missing codes | J365605.csv |
-| `ER30001` | Integer | ID number | PSID 1968 family identifier used to identify individuals across files | Dataset-specific identifier | Null if unavailable | `J365605.csv`; used as a left join key in `eda.ipynb` |
-| `ER30002` | Integer | Person number | PSID person number within the 1968 family identifier | Dataset-specific identifier | Null if unavailable | `J365605.csv`; used as a left join key in `eda.ipynb` |
-| `CDSCUMID68` | Integer | ID number | Corresponding 1968 family identifier in the PSID linkage file | Dataset-specific identifier | Null if unavailable | `M365605.csv`; used as a right join key in `eda.ipynb` |
-| `CDSCUMPN` | Integer | Person number | Corresponding person number in the PSID linkage file | Dataset-specific identifier | Null if unavailable | `M365605.csv`; used as a right join key in `eda.ipynb` |
-| `ER33401` | Integer | ID number | PSID household/family identifier used in the 1997 household consistency check | Dataset-specific identifier | Null or source-defined special codes | `J365605.csv`; compared with `CRFID97` |
-| `ER33402` | Integer | Person number | PSID person/sequence identifier used in the 1997 household consistency check | Dataset-specific identifier | Null or source-defined special codes | `J365605.csv`; compared with `CRSN97` |
-| `CRFID97` | Integer | ID number | 1997 family identifier in the linkage file | Dataset-specific identifier | Null or source-defined special codes | `M365605.csv`; compared with `ER33401` |
-| `CRSN97` | Integer | Person number | 1997 sequence identifier in the linkage file | Dataset-specific identifier | Null or source-defined special codes | `M365605.csv`; compared with `ER33402` |
+| ER12079 | Float | USD | Family income in 1996 | Observed: -64,500 to 386,250 | 206 nulls | J365605.csv |
+| ER12222 | Integer | Education code | Household head's education | Observed: 0–17 | 99 → null; 308 total nulls | J365605.csv; eda.ipynb |
+| ER12223 | Integer | Education code | Spouse's education | Observed: 0–17 | 99 → null; 286 total nulls | J365605.csv; eda.ipynb |
+| TA210679 | Integer | USD | Adult wages/salary | Observed: 0–180,000 | 9999999 → null; 121 total nulls | J365605.csv; eda.ipynb |
+| TA210220 | Integer | Employment code | Adult employment status | Observed: 1, 2, 3, 5, 6, 7, 99 | No nulls; code 99 requires verification | J365605.csv |
+| TA210225 | Integer | Weeks | Number of weeks worked | Observed: 0–52 | No nulls observed | J365605.csv |
+| ER30001 | Integer | ID | PSID 1968 family identifier | Dataset-specific identifier | Verify official missing codes | J365605.csv |
+| ER30002 | Integer | Person number | PSID person identifier | Dataset-specific identifier | Verify official missing codes | J365605.csv |
+| CDSCUMID68 | Integer | ID | Corresponding family identifier in linkage file | Dataset-specific identifier | Verify official missing codes | M365605.csv |
+| CDSCUMPN | Integer | Person number | Corresponding person identifier in linkage file | Dataset-specific identifier | Verify official missing codes | M365605.csv |
+| ER33401 | Integer | ID | PSID family identifier used in the 1997 household consistency check | Dataset-specific identifier | Verify official missing codes | J365605.csv |
+| ER33402 | Integer | Person number | PSID person/sequence identifier used in the 1997 household consistency check | Dataset-specific identifier | Verify official missing codes | J365605.csv |
+| CRFID97 | Integer | ID | 1997 family identifier in the linkage file | Dataset-specific identifier | Verify official missing codes | M365605.csv |
+| CRSN97 | Integer | Person number | 1997 sequence identifier in the linkage file | Dataset-specific identifier | Verify official missing codes | M365605.csv |
 
 
 ### NLSY97 Variables
 
 | Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
 |---|---|---|---|---|---|---|
-| R1204500 | Numeric | USD | Household income during childhood | Numeric income values | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
-| R1302400 | Integer | Education code | Father's education | Valid education categories; verify codebook | -1 to -5 and 95 → null | NLSY97_expanded.csv; eda.ipynb |
-| R1302500 | Integer | Education code | Mother's education | Valid education categories; verify codebook | -1 to -5 and 95 → null | NLSY97_expanded.csv; eda.ipynb |
-| U5753500 | Numeric | USD | Adult wages/salary | Nonnegative income values | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
-| U5753300 | Integer | Categorical code | Whether respondent received job income | Survey response codes | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
-| Z9061911 | Numeric | Weeks | Number of weeks worked | Verify valid range in codebook | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
-
+| R1204500 | Integer | USD | Childhood household income | Numeric; negative income values must be distinguished from missing codes | -1 through -5 → null; 2,396 special-code values | NLSY97_expanded.csv; eda.ipynb |
+| R1302400 | Integer | Education code | Father's education | Official categories require verification | -1 through -5 and 95 → null; 1,864 special-code values | NLSY97_expanded.csv; eda.ipynb |
+| R1302500 | Integer | Education code | Mother's education | Official categories require verification | -1 through -5 and 95 → null; 694 special-code values | NLSY97_expanded.csv; eda.ipynb |
+| U5753500 | Integer | USD | Adult wages/salary | Nonnegative after applicable cleaning | -1 through -5 → null, except zero-wages rule; 3,783 special-code values | NLSY97_expanded.csv; eda.ipynb |
+| U5753300 | Integer | Response code | Whether respondent received job income | Observed: 0, 1, and negative survey codes | -1 through -5 → null | NLSY97_expanded.csv; eda.ipynb |
+| Z9061911 | Integer | Weeks | Number of weeks worked | Official allowed range requires verification | -1 through -5 → null; 1,746 special-code values | NLSY97_expanded.csv; eda.ipynb |
 ### Derived Variables
 
 | Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
@@ -293,9 +292,9 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 
 | Dataset | Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
 |---|---|---|---|---|---|---|---|
-| Opportunity Insights | par_pctile | Integer | Percentile | Parental household income percentile | 1–100 | None observed | gender_nat.xls |
-| Opportunity Insights | w2wages_30_f | Float | USD | Average female W-2 earnings at age 30 | Nonnegative | None observed | gender_nat.xls |
-| Opportunity Insights | w2wages_30_m | Float | USD | Average male W-2 earnings at age 30 | Nonnegative | None observed | gender_nat.xls |
+| Opportunity Insights | par_pctile | Integer | Percentile | Parental household income percentile | Observed: 1–100 | 0 missing | gender_nat.xls |
+| Opportunity Insights | w2wages_30_f | Float | USD | Average female W-2 earnings at age 30 | Observed: 20,034.87–54,231.84 | 0 missing | gender_nat.xls |
+| Opportunity Insights | w2wages_30_m | Float | USD | Average male W-2 earnings at age 30 | Observed: 24,414.30–81,073.71 | 0 missing | gender_nat.xls |
 | ELS | Employment Status | String | Category | Employment outcome measured in 2012 | Categories from source tables | Verify source table | sophomorefinances2a.csv; sophomorefinances2b.csv |
 | ELS | Low SES | Float | Percent | Employment outcome percentage for low socioeconomic status group | 0–100 | NaN if missing | ELS CSV files; eda.ipynb |
 | ELS | Middle SES | Float | Percent | Employment outcome percentage for middle socioeconomic status group | 0–100 | NaN if missing | ELS CSV files; eda.ipynb |
@@ -327,60 +326,96 @@ Original publisher download URLs and access instructions should be added here to
 ### Data Cleaning and Preprocessing
 
 #### PSID Cleaning
-
 The PSID dataset was cleaned using Polars in `eda.ipynb`.
 
-1. Loaded `J365605.csv` into a Polars dataframe.
-2. Replaced the missing-value code `99` with null for the parental education variables `ER12222` and `ER12223`.
-3. Replaced the missing-value code `9999999` with null for adult wages (`TA210679`).
-4. Preserved other values unless explicitly modified in later analysis steps.
+1. Loaded `J365605.csv`, containing 2,362 rows and 25 columns.
+2. Replaced missing-value code `99` with null in `ER12222` (102 replacements).
+3. Replaced missing-value code `99` with null in `ER12223` (80 replacements).
+4. Replaced missing-value code `9999999` with null in `TA210679` (121 replacements).
+5. No rows were removed during cleaning.
 
-Relevant code: `eda.ipynb`, cell 10.
+| Variable | Values Replaced | Total Nulls After Cleaning |
+|---|---:|---:|
+| ER12222 | 102 | 308 |
+| ER12223 | 80 | 286 |
+| TA210679 | 121 | 121 |
+
+Rows before cleaning: **2,362**
+
+Rows after cleaning: **2,362**
+
+Relevant code: `eda.ipynb`.
 
 #### NLSY97 Cleaning
 
-The NLSY97 dataset was also cleaned using Polars.
+The NLSY97 dataset was cleaned using Polars.
 
-1. Loaded `NLSY97_expanded.csv`.
-2. Replaced missing-value codes `-1`, `-2`, `-3`, `-4`, and `-5` with null in the selected analysis variables.
+1. Loaded `NLSY97_expanded.csv`, containing 8,984 rows and 12 columns.
+2. Replaced missing-value codes `-1` through `-5` with null in selected analysis variables.
 3. Replaced education code `95` with null for father's education (`R1302400`) and mother's education (`R1302500`).
-4. Set adult wages (`U5753500`) to zero for respondents whose original records indicated no job income (`U5753300 = 0`) and wages coded as `-4`.
+4. Set adult wages (`U5753500`) to zero when the original record had `U5753300 = 0` and `U5753500 = -4`.
+5. Preserved other valid numeric values, including negative income values that were not missing-value codes.
 
-Relevant code: `eda.ipynb`, cell 20.
+The raw dataset contained **1,162 records** satisfying the special zero-wages condition.
 
+Relevant code: `eda.ipynb`.
 #### ELS Cleaning
 
 The ELS datasets were cleaned using Pandas.
 
 1. Loaded `sophomorefinances2a.csv` and `sophomorefinances2b.csv`.
-2. Removed the first two rows containing title and header information.
-3. Renamed the columns to `Employment Status`, `Low SES`, `Middle SES`, and `High SES`.
-4. Converted socioeconomic group percentage columns to numeric values using `pd.to_numeric()` with invalid values converted to NaN.
-5. Removed rows containing source citation text.
-6. Reset dataframe indices.
+2. Each original file contained eight rows and four columns.
+3. Removed the initial metadata rows and used the appropriate employment-status and SES column headings.
+4. Renamed the columns to `Employment Status`, `Low SES`, `Middle SES`, and `High SES`.
+5. Converted SES percentage columns to numeric values, converting invalid entries to NaN.
+6. Removed rows containing source citation text.
+7. Reset dataframe indices.
 
-Relevant code: `eda.ipynb`, cells 76 and 84.
+Each cleaned table contains **4 employment categories and 4 columns**.
+
+The first file represents Associate's degree or higher, while the second represents Bachelor's degree or higher.
+
+Relevant code: `eda.ipynb`.
 
 #### Opportunity Insights Cleaning
 
 The Opportunity Insights dataset was loaded from `gender_nat.xls` using Pandas.
 
-The analysis used `par_pctile`, `w2wages_30_f`, and `w2wages_30_m`. The notebook's data quality checks found no missing values, duplicate parental income percentiles, or negative wages in these columns.
+The original file contains **100 rows and 25 columns**.
 
-No additional cleaning was required for these selected variables.
+The analysis selected `par_pctile`, `w2wages_30_f`, and `w2wages_30_m`.
 
-Relevant code: `eda.ipynb`, cells 74 and 87.
+| Data Quality Check | Result |
+|---|---:|
+| Missing values in selected columns | 0 |
+| Duplicate parental income percentiles | 0 |
+| Negative female wages | 0 |
+| Negative male wages | 0 |
+| Rows retained | 100 |
+
+No additional cleaning was required for the selected variables.
+
+Relevant code: `eda.ipynb`.
 
 ### Filtering and Missing Values
 
 #### PSID
+Missing-value codes were converted to null during preprocessing.
 
-Missing-value codes were converted to null during preprocessing:
+Different analyses applied different filters depending on the required variables.
 
-- Parental education (`ER12222`, `ER12223`): `99` was converted to null.
-- Adult wages (`TA210679`): `9999999` was converted to null.
+| Analysis | Original Rows | Rows Retained | Rows Excluded |
+|---|---:|---:|---:|
+| Family income vs. head education | 2,362 | 2,054 | 308 |
+| Employment status vs. wages | 2,362 | 1,610 | 752 |
+| Weeks worked (null filtering) | 2,362 | 2,362 | 0 |
+| Employment status (null filtering) | 2,362 | 2,362 | 0 |
 
-The notebook uses the cleaned values when analyzing relationships between childhood family background and adult outcomes. Rows with missing values may be excluded from specific analyses depending on the variables required.
+For family income versus head education, rows with missing values were excluded and education code `99` was filtered out.
+
+For employment status versus wages, rows were retained when employment status was one of `1`, `2`, `3`, `5`, `6`, or `7`, wages were positive, and wages were not equal to `9999999`.
+
+These filters apply to individual analyses rather than permanently removing records from the original dataset.
 
 #### NLSY97
 
@@ -433,24 +468,28 @@ linked = psid_J.join(
 )
 ```
 
-A left join retains all rows from the PSID analysis file and adds matching information from the linkage file.
+A left join retains all records from the PSID analysis file and adds matching information from the linkage file.
 
-After joining, the notebook creates a `household_status` variable by comparing household identifiers:
+**Verified join results:**
+
+| Measurement | Count |
+|---|---:|
+| Left dataset rows | 2,362 |
+| Matched left-side records | 2,097 |
+| Unmatched left-side records | 265 |
+| Rows after left join | 2,362 |
+
+The notebook also creates a `household_status` variable by comparing 1997 household identifiers:
 
 - `Match`: Household identifiers agree.
 - `Mismatch`: Household identifiers disagree.
 - `Unconfirmed`: One or more required identifiers are missing.
 
-The notebook reports:
+The household consistency check reports 2,097 `Match` records and 265 `Unconfirmed` records.
 
-- 2,097 records with matching household identifiers.
-- 265 records with unconfirmed household identifiers.
+The household consistency check and person-key join are separate operations, even though their observed counts are the same.
 
-These are household verification results, not necessarily the number of successful person-key joins.
-
-The exact number of matched and unmatched person-key records should be calculated separately.
-
-Relevant code: `eda.ipynb`, cells 49 and 52.
+Relevant code: `eda.ipynb`.
 
 #### Other Datasets
 
@@ -498,6 +537,18 @@ The processing and analysis steps are implemented in `eda.ipynb`. The notebook c
 
 The datasets are not combined into one universal analysis table because they contain different populations, measurement years, and levels of aggregation.
 
+### Reproduction Requirements
+
+To reproduce the analysis:
+
+1. Obtain the six raw data files listed in the Data Downloads section.
+2. Place them in their corresponding `data/raw/` directories.
+3. Install the required Python packages, including Polars, Pandas, and the Excel-reading dependencies for `.xls` files.
+4. Open `eda.ipynb` from the repository root.
+5. Run the notebook cells in order.
+6. Verify the cleaning counts, filtering results, join results, and generated analysis outputs.
+
+Original publisher download URLs, official survey-code definitions, and exact repository code links still need to be added or verified before submission.
 ---
 
 ## 6. Data Access and Reuse (FAIR Principles)

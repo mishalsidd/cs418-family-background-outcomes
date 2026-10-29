@@ -249,11 +249,48 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 
 ### PSID Variables
 
+| Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
+|---|---|---|---|---|---|---|
+| ER12079 | Float | USD | Family income in 1996 | Numeric; includes negative values | Null | J365605.csv |
+| ER12222 | Integer | Education code | Household head's education | Code 99 treated as missing | 99 → null | J365605.csv; eda.ipynb |
+| ER12223 | Integer | Education code | Spouse's education | Code 99 treated as missing | 99 → null | J365605.csv; eda.ipynb |
+| TA210679 | Integer | USD | Adult wages/salary | Nonnegative values after cleaning | 9999999 → null | J365605.csv; eda.ipynb |
+| TA210220 | Integer | Employment code | Adult employment status | Categorical codes; verify codebook | Verify official codes | J365605.csv |
+| TA210225 | Integer | Weeks | Number of weeks worked | 0–52 | Verify missing codes | J365605.csv |
+
 ### NLSY97 Variables
+
+| Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
+|---|---|---|---|---|---|---|
+| R1204500 | Numeric | USD | Household income during childhood | Numeric income values | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
+| R1302400 | Integer | Education code | Father's education | Valid education categories; verify codebook | -1 to -5 and 95 → null | NLSY97_expanded.csv; eda.ipynb |
+| R1302500 | Integer | Education code | Mother's education | Valid education categories; verify codebook | -1 to -5 and 95 → null | NLSY97_expanded.csv; eda.ipynb |
+| U5753500 | Numeric | USD | Adult wages/salary | Nonnegative income values | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
+| U5753300 | Integer | Categorical code | Whether respondent received job income | Survey response codes | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
+| Z9061911 | Numeric | Weeks | Number of weeks worked | Verify valid range in codebook | -1 to -5 → null | NLSY97_expanded.csv; eda.ipynb |
 
 ### Derived Variables
 
+| Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
+|---|---|---|---|---|---|---|
+| household_status | String | None | Whether PSID household identifiers agree across the two linked files | Match, Mismatch, Unconfirmed | Unconfirmed indicates insufficient information | eda.ipynb, cell 52 |
+| Average Wages | Float | USD | Mean adult wages for each PSID employment category after filtering | Nonnegative | Excludes rows with missing or invalid wages | eda.ipynb, cell 58 |
+| earnings | Numeric | USD | Average of female and male W-2 earnings at age 30 in Opportunity Insights | Numeric | NaN if source values missing | eda.ipynb, cell 93 |
+| relative | Float | Ratio | Earnings divided by the corresponding dataset's mean earnings | Nonnegative for nonnegative earnings | NaN if earnings missing | eda.ipynb, cell 93 |
+| group | Integer | Income group | NLSY97 respondents divided into 20 ranked childhood-income groups | 0–19 | Rows with missing income or wages excluded | eda.ipynb, cell 93 |
+| percentile | Float | Percentile | Parental income percentile used for comparing adult earnings | OI source percentiles; NLSY97 group midpoints 2.5–97.5 | Depends on source | eda.ipynb, cell 93 |
+
 ### Secondary Dataset Variables
+
+| Dataset | Column Name | Data Type | Units | Meaning | Range / Allowed Values | Missing Values | Source |
+|---|---|---|---|---|---|---|---|
+| Opportunity Insights | par_pctile | Integer | Percentile | Parental household income percentile | 1–100 | None observed | gender_nat.xls |
+| Opportunity Insights | w2wages_30_f | Float | USD | Average female W-2 earnings at age 30 | Nonnegative | None observed | gender_nat.xls |
+| Opportunity Insights | w2wages_30_m | Float | USD | Average male W-2 earnings at age 30 | Nonnegative | None observed | gender_nat.xls |
+| ELS | Employment Status | String | Category | Employment outcome measured in 2012 | Categories from source tables | Verify source table | sophomorefinances2a.csv; sophomorefinances2b.csv |
+| ELS | Low SES | Float | Percent | Employment outcome percentage for low socioeconomic status group | 0–100 | NaN if missing | ELS CSV files; eda.ipynb |
+| ELS | Middle SES | Float | Percent | Employment outcome percentage for middle socioeconomic status group | 0–100 | NaN if missing | ELS CSV files; eda.ipynb |
+| ELS | High SES | Float | Percent | Employment outcome percentage for high socioeconomic status group | 0–100 | NaN if missing | ELS CSV files; eda.ipynb |
 
 ---
 
@@ -261,13 +298,196 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 
 ### Data Downloads
 
+The analysis uses four datasets: PSID, NLSY97, Opportunity Insights, and ELS. The raw files are organized in the repository's `data/raw/` directory.
+
+| Dataset | File | Repository Location |
+|---|---|---|
+| PSID TAS | J365605.csv | data/raw/psid/ |
+| PSID CDS Linkage | M365605.csv | data/raw/psid/ |
+| NLSY97 | NLSY97_expanded.csv | data/raw/nlsy97/ |
+| Opportunity Insights | gender_nat.xls | data/raw/opportunity_insights/ |
+| ELS | sophomorefinances2a.csv | data/raw/els/ |
+| ELS | sophomorefinances2b.csv | data/raw/els/ |
+
+The datasets are loaded in `eda.ipynb` using Polars and Pandas. PSID and NLSY97 are loaded with `pl.read_csv()`, the ELS files with `pd.read_csv()`, and Opportunity Insights with `pd.read_excel()`.
+
+The notebook uses relative file paths, so it should be run from the repository's root directory.
+
+Original publisher download URLs and access instructions should be added here to make the download process fully reproducible.
+
 ### Data Cleaning and Preprocessing
+
+#### PSID Cleaning
+
+The PSID dataset was cleaned using Polars in `eda.ipynb`.
+
+1. Loaded `J365605.csv` into a Polars dataframe.
+2. Replaced the missing-value code `99` with null for the parental education variables `ER12222` and `ER12223`.
+3. Replaced the missing-value code `9999999` with null for adult wages (`TA210679`).
+4. Preserved other values unless explicitly modified in later analysis steps.
+
+Relevant code: `eda.ipynb`, cell 10.
+
+#### NLSY97 Cleaning
+
+The NLSY97 dataset was also cleaned using Polars.
+
+1. Loaded `NLSY97_expanded.csv`.
+2. Replaced missing-value codes `-1`, `-2`, `-3`, `-4`, and `-5` with null in the selected analysis variables.
+3. Replaced education code `95` with null for father's education (`R1302400`) and mother's education (`R1302500`).
+4. Set adult wages (`U5753500`) to zero for respondents whose original records indicated no job income (`U5753300 = 0`) and wages coded as `-4`.
+
+Relevant code: `eda.ipynb`, cell 20.
+
+#### ELS Cleaning
+
+The ELS datasets were cleaned using Pandas.
+
+1. Loaded `sophomorefinances2a.csv` and `sophomorefinances2b.csv`.
+2. Removed the first two rows containing title and header information.
+3. Renamed the columns to `Employment Status`, `Low SES`, `Middle SES`, and `High SES`.
+4. Converted socioeconomic group percentage columns to numeric values using `pd.to_numeric()` with invalid values converted to NaN.
+5. Removed rows containing source citation text.
+6. Reset dataframe indices.
+
+Relevant code: `eda.ipynb`, cells 76 and 84.
+
+#### Opportunity Insights Cleaning
+
+The Opportunity Insights dataset was loaded from `gender_nat.xls` using Pandas.
+
+The analysis used `par_pctile`, `w2wages_30_f`, and `w2wages_30_m`. The notebook's data quality checks found no missing values, duplicate parental income percentiles, or negative wages in these columns.
+
+No additional cleaning was required for these selected variables.
+
+Relevant code: `eda.ipynb`, cells 74 and 87.
 
 ### Filtering and Missing Values
 
+#### PSID
+
+Missing-value codes were converted to null during preprocessing:
+
+- Parental education (`ER12222`, `ER12223`): `99` was converted to null.
+- Adult wages (`TA210679`): `9999999` was converted to null.
+
+The notebook uses the cleaned values when analyzing relationships between childhood family background and adult outcomes. Rows with missing values may be excluded from specific analyses depending on the variables required.
+
+#### NLSY97
+
+Missing-value codes `-1` through `-5` were converted to null for the selected analysis variables. Parental education code `95` was also converted to null.
+
+An exception was made for adult wages: respondents with `U5753300 = 0` and original `U5753500 = -4` were assigned zero wages because their records indicated no job income.
+
+For the comparison between NLSY97 and Opportunity Insights, rows with missing childhood household income or adult wages were removed using `dropna()`.
+
+The resulting NLSY97 comparison dataset contained 4,725 respondents.
+
+Relevant code: `eda.ipynb`, cells 20 and 93.
+
+#### ELS
+
+The first two rows of each ELS CSV were removed because they contained title and header information rather than analysis observations.
+
+Rows containing source citations were also removed. Non-numeric values in the socioeconomic percentage columns were converted to NaN.
+
+#### Opportunity Insights
+
+The selected variables contained no missing values or duplicate parental income percentiles. All 100 parental income percentile rows were retained for the analysis.
+
 ### Dataset Joins
 
+#### PSID Dataset Join
+
+The PSID analysis uses two files:
+
+- `J365605.csv`: Contains the PSID analysis variables.
+- `M365605.csv`: Contains the PSID linkage information.
+
+The datasets were joined using Polars in `eda.ipynb`.
+
+**Join keys:**
+
+| J365605.csv | M365605.csv |
+|---|---|
+| ER30001 | CDSCUMID68 |
+| ER30002 | CDSCUMPN |
+
+The notebook performs a left join:
+
+```python
+linked = psid_J.join(
+    psid_M,
+    left_on=["ER30001", "ER30002"],
+    right_on=["CDSCUMID68", "CDSCUMPN"],
+    how="left"
+)
+```
+
+A left join retains all rows from the PSID analysis file and adds matching information from the linkage file.
+
+After joining, the notebook creates a `household_status` variable by comparing household identifiers:
+
+- `Match`: Household identifiers agree.
+- `Mismatch`: Household identifiers disagree.
+- `Unconfirmed`: One or more required identifiers are missing.
+
+The notebook reports:
+
+- 2,097 records with matching household identifiers.
+- 265 records with unconfirmed household identifiers.
+
+These are household verification results, not necessarily the number of successful person-key joins.
+
+The exact number of matched and unmatched person-key records should be calculated separately.
+
+Relevant code: `eda.ipynb`, cells 49 and 52.
+
+#### Other Datasets
+
+NLSY97, ELS, and Opportunity Insights were analyzed separately rather than joined to PSID.
+
+The NLSY97 and Opportunity Insights results were compared using aggregated parental income groups and normalized adult earnings. This was a comparison of trends, not a record-level join.
+
 ### Final Analysis Dataframe
+
+The project uses multiple cleaned analysis dataframes rather than one combined dataframe. Each dataset is analyzed separately to investigate relationships between childhood family background and adult economic outcomes.
+
+#### PSID
+
+The PSID analysis uses cleaned family income, parental education, adult wages, employment status, and weeks worked variables.
+
+The PSID analysis file is also linked with the PSID linkage file using individual identifiers. The resulting dataframe includes a derived `household_status` variable for checking household identifier consistency.
+
+#### NLSY97
+
+The NLSY97 analysis uses childhood household income, parental education, adult wages, job income status, and weeks worked.
+
+For the comparison with Opportunity Insights, the notebook selects childhood household income and adult wages, removes rows missing either value, and renames the selected columns to `income` and `wages`.
+
+The resulting comparison dataset contains 4,725 respondents.
+
+Respondents are ranked by childhood household income and divided into 20 groups. Mean adult wages are calculated for each group.
+
+#### Opportunity Insights
+
+The Opportunity Insights analysis uses parental income percentile and average W-2 earnings at age 30 for females and males.
+
+For the cross-dataset comparison, the notebook averages female and male earnings at each parental income percentile. These earnings are then divided by the overall mean to create a relative earnings measure.
+
+The original dataset contains 100 parental income percentile observations.
+
+#### ELS
+
+The ELS analysis uses cleaned summary tables containing employment outcomes across low, middle, and high parental socioeconomic status groups.
+
+The two ELS tables represent different educational attainment categories and are analyzed separately.
+
+#### Reproduction
+
+The processing and analysis steps are implemented in `eda.ipynb`. The notebook contains the code used to load the raw files, clean variables, link PSID records, create derived variables, and generate exploratory analyses and comparisons.
+
+The datasets are not combined into one universal analysis table because they contain different populations, measurement years, and levels of aggregation.
 
 ---
 

@@ -222,3 +222,71 @@ Version information: Record the release or version of the specific NLSY97 files 
 - [NLSY97 Technical Sampling Report](https://www.bls.gov/nls/nlsy97/other-documentation/technical-sampling-report/nlsy97-technical-sampling-report.pdf)
 - `NLSY97_expanded.cdb` — downloaded extract codebook
 
+## Dataset Nutrition Labels
+
+We created nutrition labels to summarize the two primary datasets used in our project.
+
+- [PSID Nutrition Label](docs/PSID_Nutrition_Label.pdf)
+- [NLSY97 Nutrition Label](docs/NLSY97_Nutrition_Label.pdf)
+
+---
+
+## 3. Research Questions and Data Scope
+
+### Research Question
+
+### Target Population
+
+### Access Frame
+
+### Sample
+
+### Limitations
+
+---
+
+## 4. Variable Codebook
+
+### PSID Variables
+
+### NLSY97 Variables
+
+### Derived Variables
+
+### Secondary Dataset Variables
+
+---
+
+## 5. Data Processing and Reproduction Recipe
+
+### Data Downloads
+
+### Data Cleaning and Preprocessing
+
+### Filtering and Missing Values
+
+### Dataset Joins
+
+### Final Analysis Dataframe
+
+---
+
+## 6. Data Access and Reuse (FAIR Principles)
+
+### PSID Access and Reuse
+
+### NLSY97 Access and Reuse
+
+### Secondary Dataset Access and Reuse
+
+---
+
+## 7. Representation and Ethical Considerations (CARE Principles)
+
+### Representation in the Data
+
+### Underrepresented or Missing Groups
+
+### Potential Biases and Limitations
+
+### Privacy and Responsible Use

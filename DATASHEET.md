@@ -235,49 +235,47 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 
 ### Research Question
 
-How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?
-
-We treat this as one question studied in two primary datasets (PSID and NLSY97) and compared against two secondary datasets (Opportunity Insights and ELS). The analysis shows associations only. It does not show that family background causes later outcomes.
+How strongly do early childhood family income and parental education predict adult earnings and employment? The analysis only looks at associations. Nothing here shows that family background causes later outcomes.
 
 ### Target Population
 
-We want to study young people growing up in the United States in the late 1990s and early 2000s, and how their family's income and their parents' education relate to their earnings and employment as adults. This is broader than any one dataset covers.
+Young people growing up in the U.S. in the late 1990s and early 2000s, and how their family's income and their parents' education relate to their earnings and jobs as adults.
 
 ### Access Frame
 
-| Dataset | Who could actually be in the data |
-|---|---|
-| PSID (TAS extract) | Members of PSID families who were eligible for the Child Development Supplement and Transition into Adulthood Supplement. The PSID began in 1968 with a nationally representative sample of over 18,000 people in about 5,000 families and follows their descendants. The supplements have their own eligibility rules, so not every PSID participant is included. |
-| NLSY97 | 8,984 people born between 1980 and 1984 who were living in the United States when sampled in 1997: 6,748 in the cross-sectional sample and 2,236 in an oversample of Black and Hispanic youth. |
-| Opportunity Insights | Summary values by parental household income percentile (100 rows). The publisher's readme describes outcomes measured from tax forms (W-2, Schedule C, and Form 1099), so only people who appear in those records are reflected. |
-| ELS | Summary percentages for people who were high school sophomores in 2002. The two tables cover only those who held an associate's degree or higher, or a bachelor's degree or higher, as of 2012. |
+Who could actually end up in each dataset:
+
+- **PSID:** People in PSID families who were eligible for the Child Development Supplement and Transition into Adulthood Supplement. PSID started in 1968 with a nationally representative sample of 18,000+ people in about 5,000 families and follows their descendants, but the supplements have their own eligibility rules.
+- **NLSY97:** 8,984 people born 1980-1984 who lived in the U.S. in 1997 (6,748 in the main sample, 2,236 in an oversample of Black and Hispanic youth).
+- **Opportunity Insights:** Summary numbers for 100 parental income percentiles, based on tax records (W-2, Schedule C, 1099). Only people who show up in those records count.
+- **ELS:** Summary percentages for 2002 high school sophomores, but only the ones who ended up with an associate's or bachelor's degree or higher by 2012.
 
 ### Sample
 
-- **PSID:** All 2,362 rows of the TAS extract (`J365605.csv`) are kept. Each analysis then drops rows with missing values in the variables it needs. After linking to `M365605.csv`, 2,097 records (88.8%) have matching household identifiers and 265 (11.2%) are unconfirmed.
-- **NLSY97:** All 8,984 respondents are kept in the cleaned file. For the comparison with Opportunity Insights, we removed respondents missing childhood household income or adult wages, leaving 4,725 respondents (52.6% of the original sample). In addition, 1,162 skipped wage values were set to 0 for respondents who reported no job income.
-- **Opportunity Insights:** All 100 parental income percentile rows.
-- **ELS:** Two summary tables, each with four employment categories and three parental SES groups (low, middle, high). We have no individual-level ELS records.
-- **Weights:** Our notebook does not apply survey weights. Our results describe the respondents in these files, not the U.S. population. In NLSY97 this means Black and Hispanic respondents are overrepresented relative to their share of the population because of the oversample.
+- **PSID:** All 2,362 rows of the TAS file are kept, then each analysis drops rows missing the variables it needs. After linking to the CDS file, 2,097 rows (88.8%) have matching household IDs and 265 (11.2%) don't.
+- **NLSY97:** All 8,984 respondents are in the cleaned file. For the Opportunity Insights comparison, anyone missing childhood income or adult wages was dropped, leaving 4,725 (52.6%). Another 1,162 skipped wages were set to 0 for people who reported no job income.
+- **Opportunity Insights:** All 100 percentile rows.
+- **ELS:** Two summary tables only, with no individual-level records.
+- **Weights:** The notebook doesn't use survey weights, so results describe the people in these files, not the whole U.S. population. In NLSY97, Black and Hispanic respondents are overrepresented because of the oversample.
 
-### Groups and Observations Missing From the Data
+### Groups Missing From the Data
 
-- Families and individuals who left PSID or never met CDS/TAS eligibility rules.
-- NLSY97 respondents who did not complete the 2021 interview. The 2021 wage question has 2,271 non-interview cases (25.3% of 8,984), so adult earnings are unavailable for about a quarter of the original sample.
-- NLSY97 respondents who refused or didn't know childhood household income or parental education, and those who skipped wages.
-- People born outside 1980–1984 (NLSY97), and adults whose family background is not captured by the household head and spouse in PSID.
-- People who earn income that is not wages or salary (for example, self-employment) because our earnings variables measure wages and salary.
-- People without a degree, in the ELS tables, which cover only associate's-or-higher and bachelor's-or-higher graduates.
-- Individual-level information in Opportunity Insights and ELS. These are aggregates, so we cannot see differences within a group.
+- People who dropped out of PSID or weren't eligible for CDS/TAS.
+- NLSY97 respondents who skipped the 2021 interview (2,271 non-interviews, about 25% of 8,984), so adult earnings are missing for about a quarter of the sample.
+- People who refused or didn't know their childhood income or parents' education.
+- People born outside 1980-1984 (NLSY97).
+- People whose income isn't wages or salary, like self-employed workers.
+- People without a degree in the ELS tables.
+- Individual-level info in Opportunity Insights and ELS, since those are group summaries.
 
 ### Limitations
 
-- **Association, not causation.** Family income and parental education are related to many other factors (neighborhood, school quality, discrimination, health) that are not in our extracts. NLSY97 has only 12 selected columns from a much larger survey.
-- **Missing data may not be random.** If people with missing adult earnings differ from those with complete data (for example, lower-income families may be harder to re-interview), our estimates could be biased in either direction. We did not test for this.
-- **PSID parental education is the education of the household head and spouse,** who are not necessarily the respondent's parents.
-- **Different years and measures.** PSID family income is from 1996 (collected in 1997) and employment is from 2021. NLSY97 childhood income is from 1997 and adult employment refers to 2020 (asked in the 2021 survey). Opportunity Insights measures W-2 earnings at age 30. These are not directly comparable measures.
-- **Comparisons across datasets are group-level.** We compare NLSY97 income groups to Opportunity Insights percentiles and to ELS SES groups, so they cannot be used to draw conclusions about individuals.
-- **ELS tables are conditional on educational attainment,** so they say little about people without a degree.
+- **Association, not causation.** Things like neighborhood, school quality, and discrimination affect outcomes but aren't in the data. The NLSY97 file is only 12 columns from a much bigger survey.
+- **Missing data may not be random.** If people with missing earnings differ from people who answered, results could be biased. This wasn't tested.
+- **PSID "parental education"** is really the household head's and spouse's education, who may not be the respondent's parents.
+- **Different years and measures.** PSID income is from 1996 and employment is from 2021. NLSY97 income is from 1997 and employment is from 2020. Opportunity Insights uses W-2 earnings at age 30. These don't line up perfectly.
+- **Comparisons across datasets are group-level,** so they can't say anything about individuals.
+- **ELS tables only cover degree holders,** so they say little about people without a degree.
 
 ---
 
@@ -590,49 +588,45 @@ Original publisher download URLs, official survey-code definitions, and exact re
 
 ## 6. Data Access and Reuse (FAIR Principles)
 
-Documentation and terms of use were checked on October 28, 2026. None of these sources provides a DOI that we found, so we use the publishers' stable web addresses as persistent links.
+All documentation and terms were checked on October 28, 2026. No DOIs turned up for any of these, so the links below are the publishers' own stable pages. Exact download dates weren't recorded for the files.
 
 ### PSID Access and Reuse
 
-| Principle | Details |
-|---|---|
-| **Findable** | PSID home: https://psidonline.isr.umich.edu/. Catalog entry: https://catalog.data.gov/dataset/the-panel-study-of-income-dynamics-psid. Study design: https://psidonline.isr.umich.edu/CDS/Guide/StudyDesign.aspx. Our extracts are identified by the publisher's extract numbers J365605 (TAS) and M365605 (CDS cumulative linkage file). |
-| **Accessible** | Free, but users must register on the PSID website and agree to the Conditions of Use before downloading. Each co-investigator and student who uses the data, including extracts, must register separately. Some PSID data are sensitive or restricted and require an application with IRB approval; we used public-release data only. |
-| **Interoperable** | Files in the repository are CSV (`J365605.csv`, `M365605.csv`), with Excel versions (`.xlsx`), a variable label text file, and an HTML codebook (`J365605_codebook.html`). Variables use PSID alphanumeric IDs (for example, ER12079), and individuals are identified by the 1968 family ID and person number (ER30001, ER30002). |
-| **Reusable** | No open license such as Creative Commons applies. Use is governed by the PSID Conditions of Use (https://simba.isr.umich.edu/U/CondUse.aspx). The terms say the data may be used only for scientific research and aggregate statistical reporting, must be cited in any publication, and may not be shared with others. The terms prohibit transferring PSID public data, including user-created extracts, to any third party. People who need to share extracts must deposit them in the ICPSR-PSID Data Extract Repository. The current terms also prohibit using AI programs and large language models in conjunction with PSID data. **We therefore treat our PSID extracts and the data derived from them as not redistributable.** Any public release of our work should contain code and aggregate results only. |
-| **Version / date accessed** | Extracts J365605 and M365605. The exact download date was not recorded in our repository. PSID documentation and terms were checked on October 28, 2026. |
+- **Findable:** https://psidonline.isr.umich.edu/ (also listed at https://catalog.data.gov/dataset/the-panel-study-of-income-dynamics-psid). The files are PSID extracts J365605 (TAS) and M365605 (CDS linkage).
+- **Accessible:** Free, but users have to register on the PSID site and agree to the Conditions of Use. Every group member who uses the data has to register separately. Only public-release data was used.
+- **Interoperable:** CSV files (also Excel, a labels text file, and an HTML codebook). Variables use PSID IDs like ER12079.
+- **Reusable:** No open license. Use is governed by the PSID Conditions of Use (https://simba.isr.umich.edu/U/CondUse.aspx), which say:
+  - Use is for scientific research and aggregate statistical reporting only.
+  - PSID must be cited.
+  - PSID data and user-made extracts can't be transferred to anyone else. To share extracts, they have to be deposited in the ICPSR-PSID Data Extract Repository.
+  - The current terms also prohibit using AI programs and large language models with PSID data.
+
+  Because of this, the PSID extracts and anything derived from them are treated as **not redistributable**. Any public release should only include code and aggregate results.
+- **Version / date:** Extracts J365605 and M365605. Terms checked October 28, 2026.
 
 ### NLSY97 Access and Reuse
 
-| Principle | Details |
-|---|---|
-| **Findable** | BLS overview: https://www.bls.gov/nls/nlsy97.htm. Documentation: https://www.nlsinfo.org/content/cohorts/nlsy97. Technical sampling report: https://www.bls.gov/nls/nlsy97/other-documentation/technical-sampling-report/nlsy97-technical-sampling-report.pdf. |
-| **Accessible** | NLS public-use data are available at no cost through NLS Investigator, an online search and extraction tool (see https://www.bls.gov/nls/getting-started/accessing-data.htm). Restricted files (geocodes, zip code and census tract data, school surveys) require written agreement with BLS and are not used here. The only geographic variable in the public data is South/non-South residence. |
-| **Interoperable** | We use `NLSY97_expanded.csv`. The extract also includes `.dat`, `.sas`, `.sps`, `.dct`, `.do`, and `.cdb` files so it can be loaded into SAS, SPSS, Stata, and other tools. Variables use NLS reference numbers (for example, R1204500), and missing values use standard codes (-1 to -5). |
-| **Reusable** | We did not find a named license (such as Creative Commons) attached to the public-use files. BLS states that everything it publishes is in the public domain, except previously copyrighted photographs and illustrations, and asks that users cite BLS as the source (https://www.bls.gov/opub/copyright-information.htm). We found no separate redistribution restriction on the public-use data, but we have not confirmed whether the NLS Investigator terms add any. The public-use files exclude confidential variables to protect respondents, and we do not attempt to identify or locate any respondent. |
-| **Version / date accessed** | Extract `NLSY97_expanded`, covering the survey rounds described in our README (rounds 1–21, 1997–2023). Our adult earnings variables come from the 2021 round and refer to 2020. The exact download date was not recorded in our repository. Documentation and terms were checked on October 28, 2026. |
+- **Findable:** https://www.bls.gov/nls/nlsy97.htm and https://www.nlsinfo.org/content/cohorts/nlsy97
+- **Accessible:** Public-use data is free through NLS Investigator (see https://www.bls.gov/nls/getting-started/accessing-data.htm). Restricted files like geocodes need a BLS agreement and weren't used.
+- **Interoperable:** The project uses `NLSY97_expanded.csv`. The extract also comes with SAS, SPSS, and Stata files and a `.cdb` codebook. Variables use NLS IDs like R1204500, and missing values are coded -1 to -5.
+- **Reusable:** No named license turned up for the public-use files. BLS says everything it publishes is public domain (except photos and illustrations) and asks for a BLS citation (https://www.bls.gov/opub/copyright-information.htm). No separate redistribution restriction turned up either, but whether NLS Investigator adds one wasn't confirmed. No attempt is made to identify any respondent.
+- **Version / date:** `NLSY97_expanded`, covering rounds 1-21 (1997-2023) per the README. The wage data comes from the 2021 round and refers to 2020. Terms checked October 28, 2026.
 
 ### Secondary Dataset Access and Reuse
 
-**Opportunity Insights (Online Data Table 3: national estimates by parent percentile and gender)**
+**Opportunity Insights** (national estimates by parent percentile and gender)
+- **Findable:** https://opportunityinsights.org/data/
+- **Accessible:** Free to download, with no registration found.
+- **Interoperable:** `gender_nat.xls` plus the publisher's readme PDF with a codebook.
+- **Reusable:** No license turned up for this table. Opportunity Insights says it welcomes reuse of its figures and charts with proper credit. Whether the data table itself can be redistributed isn't documented in what was reviewed, so it's cited and linked instead.
+- **Version / date:** Table version isn't stated in the files. Checked October 28, 2026.
 
-| Principle | Details |
-|---|---|
-| **Findable** | https://opportunityinsights.org/data/ |
-| **Accessible** | Publicly downloadable from the Opportunity Insights data library, with no registration found. |
-| **Interoperable** | `gender_nat.xls` (Excel) plus the publisher's readme (`gender_nat_readme.pdf`) with a codebook. Columns follow a `[outcome]_[gender][fam]` naming pattern. |
-| **Reusable** | We did not find a license statement for this table. Opportunity Insights states that it welcomes reuse of its figures and charts and requires proper credit to Opportunity Insights. Whether the underlying data table may be redistributed is not documented in the sources we reviewed. Because the file is a small public aggregate table, we cite it as the source and link to the publisher rather than treating it as ours to relicense. |
-| **Version / date accessed** | Table version is not stated in the files we hold. Documentation checked on October 28, 2026. |
-
-**Education Longitudinal Study of 2002 (ELS:2002), NCES**
-
-| Principle | Details |
-|---|---|
-| **Findable** | https://nces.ed.gov/surveys/els2002/ |
-| **Accessible** | We use two published summary tables (`sophomorefinances2a.csv` and `sophomorefinances2b.csv`). Their source note says they come from the ELS:2002 Third Follow-up restricted-use file. Individual-level restricted-use data require a license from NCES (https://nces.ed.gov/surveys/els2002/obtainingrest.asp). A public-use version is available through NCES's online tools (https://nces.ed.gov/surveys/els2002/avail_data.asp). We did not use either. |
-| **Interoperable** | CSV, with title and source rows above and below the data that we removed during cleaning. |
-| **Reusable** | No license statement is attached to the table files we hold. NCES says it releases data for statistical purposes only and prohibits record matching or deductive disclosure of individual respondents. Because we hold only aggregate percentages, we cite NCES as the source and do not redistribute anything beyond those summary values. |
-| **Version / date accessed** | The tables describe 2012 outcomes for the 2002 sophomore cohort (Third Follow-up). The download date was not recorded. Documentation checked on October 28, 2026. |
+**ELS:2002** (NCES)
+- **Findable:** https://nces.ed.gov/surveys/els2002/
+- **Accessible:** The project only uses two published summary tables, which say they come from the ELS:2002 Third Follow-up restricted-use file. Individual-level restricted data needs an NCES license (https://nces.ed.gov/surveys/els2002/obtainingrest.asp). Neither that nor the public-use version was used.
+- **Interoperable:** CSV, with title and source rows that were removed during cleaning.
+- **Reusable:** No license statement comes with the table files. NCES releases data for statistical purposes only and prohibits matching records to identify individuals. Only summary percentages are held, so NCES is cited and nothing beyond those numbers is redistributed.
+- **Version / date:** Tables cover 2012 outcomes for the 2002 sophomore cohort. Checked October 28, 2026.
 
 ---
 
@@ -640,41 +634,40 @@ Documentation and terms of use were checked on October 28, 2026. None of these s
 
 ### Representation in the Data
 
-- **PSID** represents members of families in a long-running probability-based sample of U.S. families. Our TAS extract (2,362 people) covers only the descendants who were eligible for the supplements.
-- **NLSY97** represents people born 1980–1984 who lived in the U.S. in 1997. It deliberately oversamples Black and Hispanic youth (2,236 of 8,984 respondents), which helps with estimates for those groups but means unweighted totals do not mirror the U.S. population. Our extract includes sex, birth year, and a four-category race/ethnicity code.
-- **Opportunity Insights** and **ELS** do not describe individuals in our files. They describe groups: children by parental income percentile and gender (Opportunity Insights), and 2002 sophomores by parental SES (ELS).
+- **PSID:** Families from a long-running probability-based U.S. sample. The TAS file (2,362 people) only covers descendants eligible for the supplements.
+- **NLSY97:** People born 1980-1984 who lived in the U.S. in 1997. Black and Hispanic youth are deliberately oversampled (2,236 of 8,984), which helps with estimates for those groups but means the unweighted data doesn't mirror the U.S. population.
+- **Opportunity Insights and ELS:** These describe groups (parental income percentiles, parental SES groups), not individuals.
 
 ### Underrepresented or Missing Groups
 
-- Groups that were not oversampled in NLSY97 (for example, Asian American and Native American respondents) have few observations, so estimates for them are imprecise or cannot be made reliably.
-- People with missing childhood income, parental education, or adult wages are less likely to appear in our analyses (about 47% of NLSY97 respondents are dropped from the Opportunity Insights comparison). These respondents may differ from those who answered every question.
-- Children raised by guardians other than the household head and spouse, or in unstable households, may be misclassified by PSID's parental education variables.
-- Adults who left the survey or did not hold wage or salary jobs are missing or recorded as zero earnings.
-- The ELS tables only include degree holders, so people without a degree are not represented.
-- The datasets use fixed race, ethnicity, and gender categories, which may not match how respondents identify.
+- Groups that weren't oversampled in NLSY97 (like Asian American and Native American respondents) have fewer observations, so estimates for them are less reliable.
+- About 47% of NLSY97 respondents get dropped from the Opportunity Insights comparison because of missing income or wages, and they may differ from people who answered everything.
+- Kids raised by someone other than the household head or spouse may be misclassified by PSID's parental education variables.
+- People who left the surveys or didn't have wage jobs are missing or show as zero earnings.
+- People without a degree aren't in the ELS tables.
+- The race, ethnicity, and gender categories are fixed and may not match how people identify.
 
 ### Potential Biases and Limitations
 
-- **Selection and attrition bias:** non-response in later rounds (for example, 2,271 NLSY97 non-interviews in 2021) can distort adult-outcome estimates.
-- **Measurement bias:** self-reported income and education, topcoded incomes, and use of the household head's education as a stand-in for parents.
-- **Ecological fallacy:** matching group-level Opportunity Insights and ELS summaries to individual-level data cannot tell us what happens to any individual.
-- **Possible harms from misuse or misreading:**
-  - Reading associations as destiny, or as evidence that family background (or race, ethnicity, or gender) *causes* lower earnings, can reinforce stereotypes about low-income families and communities of color. Differences in outcomes may reflect discrimination, unequal schools, or neighborhood conditions that our variables do not measure.
-  - Using results like these to make decisions about individual students, applicants, or workers (for example, screening based on parental income or education) would be unsupported and unfair, because the data describe averages, not individuals.
-  - Framing results around "earning potential" can suggest that ability is fixed by family background. Our data measure realized wages, not potential.
-- **Who is affected by use of the data:** children and young adults from low-income and lower-education families, and members of racial and ethnic groups whose outcomes are discussed. Policymakers, schools, and employers who read results like these may act on them.
+- **Selection bias:** Non-response in later rounds (like 2,271 NLSY97 non-interviews in 2021) can distort adult outcomes.
+- **Measurement issues:** Self-reported income and education, topcoded incomes, and using the household head's education as a stand-in for parents.
+- **Ecological fallacy:** Group-level summaries (Opportunity Insights, ELS) can't show what happens to any one person.
+- **Possible harms:**
+  - Reading these patterns as "family background causes lower earnings" can reinforce stereotypes about low-income families and communities of color. Real causes could include discrimination, unequal schools, or neighborhood conditions that weren't measured.
+  - Using results like these to make decisions about individual students, applicants, or workers would be unfair, since the data only describes averages.
+  - "Earning potential" can sound like ability is fixed by family background. The data actually measures wages people earned, not potential.
+- **Who is affected:** Kids and young adults from low-income and lower-education families, and racial and ethnic groups whose outcomes are discussed, plus anyone (policymakers, schools, employers) who acts on results like these.
 
 ### Privacy and Responsible Use
 
-- The data include sensitive personal information: household income, education, race and ethnicity, employment, and wages.
-- NLSY97 public-use data omit confidential variables such as geocodes to reduce the risk that respondents can be identified, and some incomes are topcoded. We do not attempt to identify, link, or locate any respondent.
-- PSID's Conditions of Use limit use to scientific research and aggregate statistical reporting and prohibit transferring extracts. We report only aggregate results and treat the PSID extracts as not redistributable.
-- NCES prohibits record matching or deductive disclosure for ELS. We hold only summary tables.
-- We report group-level patterns and avoid presenting any individual case.
+- The data includes sensitive info like income, education, race and ethnicity, and wages.
+- NLSY97 public-use data leaves out confidential variables like geocodes, and some incomes are topcoded. No attempt is made to identify or locate anyone.
+- PSID limits use to research and aggregate reporting and bans passing along extracts, so only aggregate results are reported and those files aren't redistributed.
+- NCES prohibits identifying individuals in ELS, and only summary tables are held.
 
-**CARE principles (Collective benefit, Authority to control, Responsibility, Ethics).** CARE was developed for Indigenous data governance, and these datasets were not collected under it. We use the four principles as a lens:
+**CARE principles.** CARE comes from Indigenous data governance and these datasets weren't collected under it, but the four principles are used here as a lens:
 
-- **Collective benefit:** the research aims to help understand how family background relates to adult economic outcomes, which could inform policy for the groups studied. The publishers' documentation we reviewed does not describe how benefits are shared with participating communities.
-- **Authority to control:** respondents participated in surveys, and we did not find documentation of how much say they or their communities have over later reuse. PSID and BLS use confidentiality rules instead of community governance.
-- **Responsibility:** we cite sources, document processing and missing data, and describe limits so that results are not overstated.
-- **Ethics:** we avoid re-identification, avoid causal or stereotyping language, and note that consent and ethical-review details for the survey waves we use were not documented in the files we reviewed.
+- **Collective benefit:** The project aims to help people understand how family background relates to adult outcomes, which could inform policy. The publishers' docs that were reviewed don't explain how benefits go back to participating communities.
+- **Authority to control:** No documentation turned up on how much say participants have over later reuse. PSID and BLS rely on confidentiality rules instead.
+- **Responsibility:** Sources are cited, and cleaning, missing data, and limits are documented so results aren't overstated.
+- **Ethics:** Re-identification and causal or stereotyping language are avoided. Consent and ethical-review details for the survey waves used weren't documented in the files that were reviewed.

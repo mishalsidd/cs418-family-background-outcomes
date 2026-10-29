@@ -257,6 +257,15 @@ We created nutrition labels to summarize the two primary datasets used in our pr
 | TA210679 | Integer | USD | Adult wages/salary | Nonnegative values after cleaning | 9999999 → null | J365605.csv; eda.ipynb |
 | TA210220 | Integer | Employment code | Adult employment status | Categorical codes; verify codebook | Verify official codes | J365605.csv |
 | TA210225 | Integer | Weeks | Number of weeks worked | 0–52 | Verify missing codes | J365605.csv |
+| `ER30001` | Integer | ID number | PSID 1968 family identifier used to identify individuals across files | Dataset-specific identifier | Null if unavailable | `J365605.csv`; used as a left join key in `eda.ipynb` |
+| `ER30002` | Integer | Person number | PSID person number within the 1968 family identifier | Dataset-specific identifier | Null if unavailable | `J365605.csv`; used as a left join key in `eda.ipynb` |
+| `CDSCUMID68` | Integer | ID number | Corresponding 1968 family identifier in the PSID linkage file | Dataset-specific identifier | Null if unavailable | `M365605.csv`; used as a right join key in `eda.ipynb` |
+| `CDSCUMPN` | Integer | Person number | Corresponding person number in the PSID linkage file | Dataset-specific identifier | Null if unavailable | `M365605.csv`; used as a right join key in `eda.ipynb` |
+| `ER33401` | Integer | ID number | PSID household/family identifier used in the 1997 household consistency check | Dataset-specific identifier | Null or source-defined special codes | `J365605.csv`; compared with `CRFID97` |
+| `ER33402` | Integer | Person number | PSID person/sequence identifier used in the 1997 household consistency check | Dataset-specific identifier | Null or source-defined special codes | `J365605.csv`; compared with `CRSN97` |
+| `CRFID97` | Integer | ID number | 1997 family identifier in the linkage file | Dataset-specific identifier | Null or source-defined special codes | `M365605.csv`; compared with `ER33401` |
+| `CRSN97` | Integer | Person number | 1997 sequence identifier in the linkage file | Dataset-specific identifier | Null or source-defined special codes | `M365605.csv`; compared with `ER33402` |
+
 
 ### NLSY97 Variables
 

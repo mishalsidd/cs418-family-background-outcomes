@@ -35,7 +35,7 @@ See `eda.ipynb` for the code and `EDA.md` for the full write-up.
 
 ## Data documentation
 
-Full documentation is in [DATASHEET.md](DATASHEET.md). It covers each dataset's background, research scope, codebook, processing steps, access and reuse terms, and ethical considerations. Terms and documentation were checked on October 28, 2026.
+Full documentation is in [DATASHEET.md](DATASHEET.md). It covers each dataset's background, research scope, codebook, processing steps, access and reuse terms, and ethical considerations. 
 
 | Dataset | Source | License / terms |
 |---|---|---|

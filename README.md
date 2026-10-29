@@ -32,3 +32,16 @@ Notes about shape of data:
 - These are patterns and do not show that family background causes the differences.
 
 See `eda.ipynb` for the code and `EDA.md` for the full write-up.
+
+## Data documentation
+
+Full documentation is in [DATASHEET.md](DATASHEET.md). It covers each dataset's background, research scope, codebook, processing steps, access and reuse terms, and ethical considerations. Terms and documentation were checked on October 28, 2026.
+
+| Dataset | Source | License / terms |
+|---|---|---|
+| PSID (primary) | [psidonline.isr.umich.edu](https://psidonline.isr.umich.edu/) | No open license. The [PSID Conditions of Use](https://simba.isr.umich.edu/U/CondUse.aspx) allow research and aggregate reporting only, require citation, and prohibit sharing extracts with others. PSID files here are treated as not redistributable. |
+| NLSY97 (primary) | [bls.gov/nls/nlsy97.htm](https://www.bls.gov/nls/nlsy97.htm) | No named license found. BLS says its published material is [public domain](https://www.bls.gov/opub/copyright-information.htm) and asks for a BLS citation. |
+| Opportunity Insights (secondary) | [opportunityinsights.org/data](https://opportunityinsights.org/data/) | No license found. Credit to Opportunity Insights is required when reusing its figures and charts. |
+| ELS:2002 (secondary) | [nces.ed.gov/surveys/els2002](https://nces.ed.gov/surveys/els2002/) | No license statement on the tables. NCES releases data for statistical purposes only and prohibits identifying individuals. |
+
+**Biggest data limitation:** A lot of respondents are missing key values (about a quarter of NLSY97 respondents have no adult earnings, and about half are dropped from the Opportunity Insights comparison), so results describe the people who answered, not everyone. The data also only shows associations, not causes.

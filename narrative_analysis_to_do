@@ -1,0 +1,59 @@
+
+# CS 418 Checkpoint 5 — Task Distribution
+
+**Due: Sunday, November 15**
+
+## Saima — Finding 1 + README Setup
+- [ ] Analyze one research question and identify a finding.
+- [ ] Run a statistical analysis to support the finding.
+- [ ] Report results with uncertainty (p-value, confidence interval, etc.).
+- [ ] Create one polished visualization.
+- [ ] Identify an alternative explanation and run at least one check.
+- [ ] Write a one-sentence finding and one explanatory paragraph.
+- [ ] Set up the `Main Findings (Narrative Analysis)` section in README.
+- [ ] Commit changes to GitHub.
+
+## Person 2 — Finding 2
+- [ ] Analyze a second research question and identify a finding.
+- [ ] Run a statistical analysis to support the finding.
+- [ ] Report results with uncertainty.
+- [ ] Create one polished visualization.
+- [ ] Identify an alternative explanation and run at least one check.
+- [ ] Write a one-sentence finding and one explanatory paragraph.
+- [ ] Add finding and figure to README.
+- [ ] Commit changes to GitHub.
+
+## Person 3 — Finding 3
+- [ ] Analyze a third research question and identify a finding.
+- [ ] Run a statistical analysis to support the finding.
+- [ ] Report results with uncertainty.
+- [ ] Create one polished visualization.
+- [ ] Identify an alternative explanation and run at least one check.
+- [ ] Write a one-sentence finding and one explanatory paragraph.
+- [ ] Add finding and figure to README.
+- [ ] Commit changes to GitHub.
+
+## Person 4 — Finding 4 + Reproducibility
+- [ ] Analyze a fourth research question and identify a finding.
+- [ ] Run a statistical analysis to support the finding.
+- [ ] Report results with uncertainty.
+- [ ] Create one polished visualization.
+- [ ] Identify an alternative explanation and run at least one check.
+- [ ] Write a one-sentence finding and one explanatory paragraph.
+- [ ] Add finding and figure to README.
+- [ ] Verify that all numbers and figures are reproducible from repository code.
+- [ ] Commit changes to GitHub.
+
+## Everyone — Final Review
+- [ ] Agree on the order of the four findings so they tell a connected story.
+- [ ] Ensure each finding has one paragraph and one visualization.
+- [ ] Make sure results are interpreted without unsupported causal claims.
+- [ ] Document analyses excluded from the final narrative and why.
+- [ ] Review the README against all eight rubric criteria.
+- [ ] Confirm all four members have committed.
+- [ ] Submit the GitHub repository URL to Canvas.
+
+## Timeline
+- **Friday, November 13:** Complete individual analyses, figures, and write-ups.
+- **Saturday, November 14:** Combine findings, review narrative, and check reproducibility.
+- **Sunday, November 15:** Final review and submission.

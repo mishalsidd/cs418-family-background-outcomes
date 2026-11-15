@@ -1,5 +1,26 @@
 # cs418-family-background-outcomes
 
+## Main Findings (Narrative Analysis)
+
+- Among 3,847 NLSY97 respondents with valid childhood income and positive adult wages, a 10-percentile-point increase in childhood family income rank was associated with a 2.95-percentile-point increase in adult earnings rank (95% CI: 2.64–3.25), although childhood income rank explained only 8.7% of the variation in adult earnings rank.
+- [Person 2's finding]
+- [Person 3's finding]
+- [Person 4's finding]
+
+### Finding 1
+Using NLSY97 data, we looked at the relationship between childhood family income and adult earnings among 3,847 respondents with valid childhood income data and positive reported wages. Our linear regression showed that a 10-percentile-point increase in childhood family income rank was associated with a 2.95-percentile-point increase in adult earnings rank (95% CI: 2.64–3.25; p < 0.001). However, childhood income only explained about 8.7% of the variation in adult earnings rank, meaning there are likely other factors that play a role. One possible explanation is that parental education and demographic differences also influence this relationship. To check this, we ran another regression that accounted for parents' education levels, sex, and race/ethnicity. Using the same 3,165 respondents for both models, the income coefficient dropped from 0.2809 to 0.1858, a decrease of about 34%. Even after accounting for these other factors, the relationship was still positive and statistically significant (95% CI: 0.1462–0.2254; p < 0.001). Overall, our results suggest that childhood family income is related to adult earnings, but it is not the only factor associated with someone's earnings later in life. Since our data is observational, we also cannot conclude that higher childhood income directly causes higher adult earnings.
+![Childhood income remains associated with adult earnings after accounting for other factors](figures/finding-one.png)
+
+*Figure 1. The relationship between childhood family income and adult earnings becomes weaker after controlling for parental education, sex, and race/ethnicity, but remains positive. Points show regression estimates, and error bars show 95% confidence intervals.*
+
+
+### Finding 2
+
+### Finding 3
+
+### Finding 4
+
+
 CS 418 Group Project: Asha, Mishal, Safiyyah, Saima
 
 Group's Research Question: How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?

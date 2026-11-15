@@ -1,59 +1,86 @@
-
-# CS 418 Checkpoint 5 — Task Distribution
+# Checkpoint 5 — Updated Task Distribution
 
 **Due: Sunday, November 15**
 
-## Saima — Finding 1 + README Setup
-- [ ] Analyze one research question and identify a finding.
-- [ ] Run a statistical analysis to support the finding.
-- [ ] Report results with uncertainty (p-value, confidence interval, etc.).
-- [ ] Create one polished visualization.
-- [ ] Identify an alternative explanation and run at least one check.
+## Saima — Finding 1: Parental Income & Adult Earnings + README Setup
+- [ ] Analyze the relationship between parental income rank and adult earnings rank using NLSY97.
+- [ ] Run a linear regression and report the coefficient, 95% confidence interval, and p-value.
+- [ ] Compare results with and without demographic controls as a robustness check.
+- [ ] Create one polished visualization (`figures/finding-one.png`).
 - [ ] Write a one-sentence finding and one explanatory paragraph.
-- [ ] Set up the `Main Findings (Narrative Analysis)` section in README.
+- [ ] Set up the `Main Findings (Narrative Analysis)` section at the top of README.
 - [ ] Commit changes to GitHub.
 
-## Person 2 — Finding 2
-- [ ] Analyze a second research question and identify a finding.
-- [ ] Run a statistical analysis to support the finding.
-- [ ] Report results with uncertainty.
-- [ ] Create one polished visualization.
-- [ ] Identify an alternative explanation and run at least one check.
+## Person 2 — Finding 2: Parental Education vs. Family Income
+
+**Research question:** Does parental education predict adult earnings after accounting for family income?
+
+- [ ] Use NLSY97 to analyze the relationship between parental education and adult earnings rank.
+- [ ] Run a multiple linear regression including parental income rank and parental education.
+- [ ] Include sex and race/ethnicity as control variables where available.
+- [ ] Compare the predictive contribution of parental education and family income.
+- [ ] Report regression coefficients, confidence intervals, and p-values.
+- [ ] Create one polished visualization comparing adjusted associations (`figures/finding-two.png`).
+- [ ] Consider whether parental education's relationship with earnings is explained by its correlation with family income.
+- [ ] Run a robustness check by comparing models with and without parental income.
 - [ ] Write a one-sentence finding and one explanatory paragraph.
-- [ ] Add finding and figure to README.
+- [ ] Add the finding and visualization to README.
 - [ ] Commit changes to GitHub.
 
-## Person 3 — Finding 3
-- [ ] Analyze a third research question and identify a finding.
-- [ ] Run a statistical analysis to support the finding.
-- [ ] Report results with uncertainty.
-- [ ] Create one polished visualization.
-- [ ] Identify an alternative explanation and run at least one check.
+## Person 3 — Finding 3: Family Background & Having Earnings
+
+**Research question:** Does family background predict whether someone reports any earnings?
+
+- [ ] Use NLSY97 to create a binary `has_earnings` variable, carefully distinguishing zero earnings from missing responses.
+- [ ] Run the logistic regression recommended by the professor:
+  `has_earnings ~ parent_income_rank + C(parent_education) + C(sex) + C(race_ethnicity)`
+- [ ] Report interpretable results, such as predicted probabilities or odds ratios, with 95% confidence intervals.
+- [ ] Compare predicted probabilities across parental-income groups.
+- [ ] Create one polished visualization (`figures/finding-three.png`).
+- [ ] Identify an alternative explanation, such as missing wage responses or differences across demographic groups.
+- [ ] Run a robustness check by changing the treatment of skipped wages or comparing demographic subgroups.
 - [ ] Write a one-sentence finding and one explanatory paragraph.
-- [ ] Add finding and figure to README.
+- [ ] Add the finding and visualization to README.
 - [ ] Commit changes to GitHub.
 
-## Person 4 — Finding 4 + Reproducibility
-- [ ] Analyze a fourth research question and identify a finding.
-- [ ] Run a statistical analysis to support the finding.
-- [ ] Report results with uncertainty.
-- [ ] Create one polished visualization.
-- [ ] Identify an alternative explanation and run at least one check.
+## Person 4 — Finding 4: Replication Across Datasets + Reproducibility
+
+**Research question:** Is the relationship between parental income and adult earnings consistent across NLSY97 and Opportunity Insights?
+
+- [ ] Compare the parental-income/adult-earnings relationship across NLSY97 and Opportunity Insights.
+- [ ] Identify comparable income-rank measures and document any differences in definitions or populations.
+- [ ] Estimate the strength of the relationship in each dataset using an appropriate regression or correlation analysis.
+- [ ] Report estimates and uncertainty, such as confidence intervals or variation across groups.
+- [ ] Create one polished visualization comparing the patterns (`figures/finding-four.png`).
+- [ ] Consider differences in sampling, measurement, and time periods as alternative explanations.
+- [ ] Run a robustness check using comparable income groups or an alternative specification.
 - [ ] Write a one-sentence finding and one explanatory paragraph.
-- [ ] Add finding and figure to README.
-- [ ] Verify that all numbers and figures are reproducible from repository code.
+- [ ] Add the finding and visualization to README.
+- [ ] Verify that all four findings' numbers and figures are reproducible from repository code.
 - [ ] Commit changes to GitHub.
 
 ## Everyone — Final Review
-- [ ] Agree on the order of the four findings so they tell a connected story.
-- [ ] Ensure each finding has one paragraph and one visualization.
-- [ ] Make sure results are interpreted without unsupported causal claims.
-- [ ] Document analyses excluded from the final narrative and why.
+- [ ] Confirm that all four findings are supported by actual statistical results.
+- [ ] Organize the findings into a connected story: parental income → parental education → having earnings → cross-dataset replication.
+- [ ] Ensure each finding has exactly one explanatory paragraph and one polished figure.
+- [ ] Explain uncertainty and avoid unsupported causal claims.
+- [ ] Document analyses excluded from the narrative and why.
+- [ ] Confirm all notebooks run and figures are saved in the correct locations.
 - [ ] Review the README against all eight rubric criteria.
-- [ ] Confirm all four members have committed.
+- [ ] Confirm all four group members have at least one commit.
 - [ ] Submit the GitHub repository URL to Canvas.
 
 ## Timeline
-- **Friday, November 13:** Complete individual analyses, figures, and write-ups.
-- **Saturday, November 14:** Combine findings, review narrative, and check reproducibility.
-- **Sunday, November 15:** Final review and submission.
+
+**Saturday, November 14**
+- Complete individual statistical analyses.
+- Generate figures and draft findings.
+- Add results to README.
+- Coordinate shared variables and model specifications.
+
+**Sunday, November 15**
+- Run robustness checks and finalize interpretations.
+- Verify reproducibility.
+- Review the full narrative and README.
+- Confirm everyone's commits.
+- Submit the repository URL.

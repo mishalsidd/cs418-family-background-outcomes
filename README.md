@@ -1,5 +1,9 @@
 # cs418-family-background-outcomes
 
+# CS 418 Group Project: Asha, Mishal, Safiyyah, Saima
+
+### Group's Research Question (Tentative): How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?
+
 ## Main Findings (Narrative Analysis)
 
 - Among 3,847 NLSY97 respondents with valid childhood income and positive adult wages, a 10-percentile-point increase in childhood family income rank was associated with a 2.95-percentile-point increase in adult earnings rank (95% CI: 2.64–3.25), although childhood income rank explained only 8.7% of the variation in adult earnings rank.
@@ -35,10 +39,6 @@ We compared the same rank–rank relationship in NLSY97, a survey of 8,984 young
 <img width="3600" height="1740" alt="IMG_3446" src="https://github.com/user-attachments/assets/b8d0c7dc-ea74-4686-b677-8fc607278f98" />
 
 Figure 4. The parental-income/adult-earnings relationship replicates across NLSY97 and Opportunity Insights. Panel A shows mean adult earnings rank by parental income quintile in each dataset; Panel B shows the rank–rank slope per 10-percentile-point increase in parental income rank, with 95% confidence intervals. The Opportunity Insights intervals come from fitting 100 percentile means, so they are narrower than the individual-level NLSY97 interval.
-
-CS 418 Group Project: Asha, Mishal, Safiyyah, Saima
-
-Group's Research Question: How strongly do early childhood family income and parental education levels predict adult earning potential and employment status?
 
 Two Primary Datasets:
 1) https://catalog.data.gov/dataset/the-panel-study-of-income-dynamics-psid?utm

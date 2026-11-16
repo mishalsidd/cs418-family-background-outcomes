@@ -4,7 +4,7 @@
 
 - Among 3,847 NLSY97 respondents with valid childhood income and positive adult wages, a 10-percentile-point increase in childhood family income rank was associated with a 2.95-percentile-point increase in adult earnings rank (95% CI: 2.64–3.25), although childhood income rank explained only 8.7% of the variation in adult earnings rank.
 - The simple linear regression analysis found a statistically significant positive relationship between gross family income rank and mother's education rank, with a regression coefficient of 0.4438 (p < 0.001). The R-squared value was 0.1886, indicating that gross family income rank explained approximately 18.86% of the variation in mother's education rank. The results suggest that higher family income rankings are associated with higher mother's education rankings. The sample consisted of 3,660 observations. However, this relationship does not establish causation.
-- [Person 3's finding]
+- Among 4,747 NLSY97 respondents with valid childhood income, parental education, and a usable earnings answer, the predicted probability of having adult earnings rose from 78.9% in the lowest childhood family income quartile to 87.2% in the highest, after accounting for parental education, sex, and race/ethnicity (odds ratio per 10-percentile-point increase in income rank: 1.085; 95% CI: 1.050–1.120).
 - [Person 4's finding]
 
 ### Finding 1
@@ -21,6 +21,11 @@ The baseline model examines the relationship between the mother's education and 
 ![Mother's education positively predicts family income, even after adjusting for demographics and father's education](figures/finding-two.png)
 
 ### Finding 3
+We used NLSY97 data to ask whether a person's family background predicts whether they report any earnings as an adult. We counted respondents as having earnings if they said they had job income, and we left out the 2,327 who were not interviewed or did not answer, instead of counting them as having no earnings. Among 4,747 respondents, we ran a logistic regression using childhood family income rank, parents' education, sex, and race/ethnicity. Childhood income mattered: about 79% of respondents from the lowest-income quartile were predicted to have earnings, compared with about 87% from the highest (odds ratio per 10-percentile-point increase in income rank: 1.085; 95% CI: 1.050–1.120; p < 0.001). Parents' education also mattered. Respondents whose parents had less than a high school education had about half the odds of having earnings compared with those whose parents had college or more (OR 0.46; 95% CI: 0.35–0.61). The income result barely changed when we only counted people who reported a positive wage (OR 1.089; 95% CI: 1.054–1.125). One concern is that the 2,327 people we left out could differ from everyone else, but they were similar across income groups (24.1% missing in the lowest quartile and 26.2% in the highest), so this is unlikely to explain the pattern. Since the data is observational, these are associations and do not show that family background causes whether someone has earnings.
+
+![Higher childhood family income is associated with a higher probability of having adult earnings](figures/finding-three.png)
+
+*Figure 3. Predicted probability of having adult earnings by childhood family income quartile, adjusting for parents' education, sex, and race/ethnicity. Dots are predicted probabilities and bars are 95% confidence intervals. The y-axis starts at 50%.*
 
 ### Finding 4
 

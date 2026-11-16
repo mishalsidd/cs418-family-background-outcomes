@@ -11,9 +11,9 @@
 - [ ] Set up the `Main Findings (Narrative Analysis)` section at the top of README.
 - [ ] Commit changes to GitHub.
 
-## Asha — Finding 2: Parental Education vs. Family Income
+## Asha — Finding 2: Mother Education vs. Family Income
 
-**Research question:** Does parental education predict adult earnings after accounting for family income?
+**Research question:** Does the mother's education predict adult earnings after accounting for family income?
 
 - [ ] Use NLSY97 to analyze the relationship between parental education and adult earnings rank.
 - [ ] Run a multiple linear regression including parental income rank and parental education.

@@ -3,7 +3,7 @@
 ## Main Findings (Narrative Analysis)
 
 - Among 3,847 NLSY97 respondents with valid childhood income and positive adult wages, a 10-percentile-point increase in childhood family income rank was associated with a 2.95-percentile-point increase in adult earnings rank (95% CI: 2.64–3.25), although childhood income rank explained only 8.7% of the variation in adult earnings rank.
-- [Person 2's finding]
+- The simple linear regression analysis found a statistically significant positive relationship between gross family income rank and mother's education rank, with a regression coefficient of 0.4438 (p < 0.001). The R-squared value was 0.1886, indicating that gross family income rank explained approximately 18.86% of the variation in mother's education rank. The results suggest that higher family income rankings are associated with higher mother's education rankings. The sample consisted of 3,660 observations. However, this relationship does not establish causation.
 - [Person 3's finding]
 - [Person 4's finding]
 
@@ -15,6 +15,10 @@ Using NLSY97 data, we looked at the relationship between childhood family income
 
 
 ### Finding 2
+
+My question was: Does a mother's education predict adult earnings after accounting for family income?
+The baseline model examines the relationship between the mother's education and family income. The adjusted model accounts for father's education, sex, and race/ethnicity. The results for the baseline model included: Mother's education coefficent = 0.4340, R-squared = 18.23%, P-value = 2e-140. The results for the adjusted model included: Mother's education coefficent = 0.2335, R-squared = 29.99%, P-value = 1.537e-34. The coeffecient reduced by almost 50% but still remained statistically significant. This suggests that a mother's education is still positively associated with family income even after accounting for these other characteristics.
+![Mother's education positively predicts family income, even after adjusting for demographics and father's education](figures/finding-two.png)
 
 ### Finding 3
 
